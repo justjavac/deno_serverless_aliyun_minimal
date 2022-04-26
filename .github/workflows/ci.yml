@@ -98,19 +98,19 @@ jobs:
       - name: Pre-release (linux)
         if: startsWith(matrix.os, 'ubuntu')
         run: |
-          cd target/release
+          cd bootstrap/target/release
           zip -r bootstrap-x86_64-unknown-linux-gnu.zip bootstrap
 
       - name: Pre-release (mac)
         if: startsWith(matrix.os, 'macOS')
         run: |
-          cd target/release
+          cd bootstrap/target/release
           zip -r bootstrap-x86_64-apple-darwin.zip bootstrap
 
       - name: Pre-release (windows)
         if: startsWith(matrix.os, 'windows')
         run: |
-          Compress-Archive -CompressionLevel Optimal -Force -Path target/release/bootstrap.exe -DestinationPath target/release/bootstrap-x86_64-pc-windows-msvc.zip
+          Compress-Archive -CompressionLevel Optimal -Force -Path bootstrap/target/release/bootstrap.exe -DestinationPath bootstrap/target/release/bootstrap-x86_64-pc-windows-msvc.zip
 
       - name: Release
         uses: softprops/action-gh-release@v1
