@@ -1,0 +1,31 @@
+edition: 1.0.0
+name: deno_demo
+access: default
+
+vars:
+  region: cn-beijing
+  service:
+    name: deno_demo
+    description: 'hello world by serverless devs'
+    internetAccess: true
+
+services:
+  helloworld:
+    component: fc
+    # actions:
+    #   pre-deploy:
+    #     - run: make build
+    #       path: ./
+    props:
+      region: ${vars.region}
+      service: ${vars.service}
+      function:
+        name: fc_deno_ops
+        description: 'hello world by serverless devs'
+        timeout: 30
+        memorySize: 512
+        runtime: custom
+        codeUri: ./pkg
+        customRuntimeConfig:
+          command:
+            - ./bootstrap
